@@ -79,5 +79,5 @@ $python_interpreter/pip install shade
 
 # Configure LAMPSTACK
 echo "cloud ansible_python_interpreter=$python_interpreter/python" >> ~/osops-tools-contrib/ansible/lampstack/hosts
-wget https://raw.githubusercontent.com/dlux/os_interop_challenge/master/cloud1.yml -o ~/osops-tools-contrib/ansible/lampstack/vars/cloud1.yml
+wget https://raw.githubusercontent.com/dlux/os_interop_challenge/master/cloud1.yml -O ~/osops-tools-contrib/ansible/lampstack/vars/cloud1.yml
 chmod +x ~/osops-tools-contrib/ansible/lampstack/vars/cloud1.yml
