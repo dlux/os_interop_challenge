@@ -37,6 +37,7 @@ EOF
 
 # Create venv
 mkvirtualenv interops
+python_interpreter=$WORKON_HOME/interops/bin
 
 # Clone OSOPS TOOLS project
 git clone https://github.com/openstack/osops-tools-contrib.git ~/osops-tools-contrib
