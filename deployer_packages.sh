@@ -19,17 +19,18 @@ sudo apt-get update
 sudo apt-get install -y ansible
 
 # Generate ssh keys
-ssh-keygen -t rsa -b 4096 -C "luz.cazares@intel.com" -N "" -f ~/.ssh/id_rsa
+ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 eval $(ssh-agent -s)
 ssh-add ~/.ssh/id_rsa
 
 # setup virtualenvwrapper
 mkdir ~/.virtualenvs
-export WORKON_HOME=~/.virtualenvs/
+WORKON_HOME=~/.virtualenvs/
+export WORKON_HOME=$WORKON_HOME
 source /usr/local/bin/virtualenvwrapper.sh
 
-cat <<EOF >> "/home/ubuntu/.bashrc"
-export WORKON_HOME=/home/ubuntu/.virtualenvs
+cat <<EOF >> "~/.bashrc"
+export WORKON_HOME=$WORKON_HOME
 source /usr/local/bin/virtualenvwrapper.sh
 EOF
 
