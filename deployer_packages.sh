@@ -3,8 +3,12 @@
 # set -o xtrace
 
 sudo apt-get update
-sudo apt-get install -y curl git python-pip
+sudo apt-get install -y wget curl git
 sudo apt-get install -y --force-yes build-essential libssl-dev libffi-dev python-dev libxml2-dev libxslt1-dev libpq-dev
+
+sudo wget https://bootstrap.pypa.io/get-pip.py
+sudo python get-pip.py
+
 sudo pip install virtualenv
 sudo pip install virtualenvwrapper
 
@@ -15,7 +19,7 @@ sudo apt-get update
 sudo apt-get install -y ansible
 
 # Generate ssh keys
-ssh-keygen -t rsa -b 4096 -C "luz.cazares@intel.com" -N "" -f .ssh/id_rsa
+ssh-keygen -t rsa -b 4096 -C "luz.cazares@intel.com" -N "" -f ~/.ssh/id_rsa
 eval $(ssh-agent -s)
 ssh-add ~/.ssh/id_rsa
 
