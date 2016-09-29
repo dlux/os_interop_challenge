@@ -2,48 +2,35 @@
 
 # set -o xtrace
 
-sudo apt-get update
-sudo apt-get install -y wget curl git
-sudo apt-get install -y --force-yes build-essential libssl-dev libffi-dev python-dev libxml2-dev libxslt1-dev libpq-dev
+# Ensure script is run as root
+if [ "$EUID" -ne "0" ]; then
+  PrintError "This script must be run as root."
+fi
 
-sudo wget https://bootstrap.pypa.io/get-pip.py
-sudo python get-pip.py
+apt-get update
+apt-get install -y wget curl git
+apt-get install -y --force-yes build-essential libssl-dev libffi-dev python-dev libxml2-dev libxslt1-dev libpq-dev
 
-sudo pip install virtualenv
-sudo pip install virtualenvwrapper
+wget https://bootstrap.pypa.io/get-pip.py
+python get-pip.py
 
 # Install Ansible
-sudo apt-get install -y software-properties-common
-sudo apt-add-repository -y ppa:ansible/ansible
-sudo apt-get update
-sudo apt-get install -y ansible
+apt-get install -y software-properties-common
+apt-add-repository -y ppa:ansible/ansible
+apt-get update
+apt-get install -y ansible
 
 # Generate ssh keys
 ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 eval $(ssh-agent -s)
 ssh-add ~/.ssh/id_rsa
 
-# setup virtualenvwrapper
-mkdir ~/.virtualenvs
-WORKON_HOME=~/.virtualenvs/
-export WORKON_HOME=$WORKON_HOME
-source /usr/local/bin/virtualenvwrapper.sh
-
-cat <<EOF >> "~/.bashrc"
-export WORKON_HOME=$WORKON_HOME
-source /usr/local/bin/virtualenvwrapper.sh
-EOF
-
-# Create venv
-mkvirtualenv interops
-
 # Clone OSOPS TOOLS project
 git clone https://github.com/openstack/osops-tools-contrib.git ~/osops-tools-contrib
 
 # Install shade
-$python_interpreter/pip install shade
+pip install shade
 
 # Configure LAMPSTACK
-echo "cloud ansible_python_interpreter=$python_interpreter/python" >> ~/osops-tools-contrib/ansible/lampstack/hosts
+#echo "cloud ansible_python_interpreter=$python_interpreter/python" >> ~/osops-tools-contrib/ansible/lampstack/hosts
 wget https://raw.githubusercontent.com/dlux/os_interop_challenge/master/cloud1.yml -O ~/osops-tools-contrib/ansible/lampstack/vars/cloud1.yml
-chmod +x ~/osops-tools-contrib/ansible/lampstack/vars/cloud1.yml
