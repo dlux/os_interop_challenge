@@ -62,7 +62,8 @@ Docker Swamp
    * Display a set of environment variables that you can use to run docker commands
 
 
-**Deployer VM Pre-Requisites:**
+Deployer VM Pre-Requisites:
+**********
 
 One deployer to run them all -- Use a disposable VM to fire the workloads (cloud VM, vagrant, virtualbox).
 
