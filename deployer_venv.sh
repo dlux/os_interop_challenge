@@ -52,5 +52,5 @@ chmod +x ~/osops-tools-contrib/ansible/lampstack/vars/cloud1.yml
 
 # Disable strict key check
 sudo bash -c 'cat << EOF >> /etc/ssh/ssh_config
-StrictHostKeyChecking no
+    StrictHostKeyChecking no
 EOF'
