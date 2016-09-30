@@ -1,0 +1,38 @@
+# !/bin/bash
+
+# set -o xtrace
+
+sudo apt-get update
+sudo apt-get install -y wget curl git
+sudo apt-get install -y --force-yes build-essential libssl-dev libffi-dev python-dev libxml2-dev libxslt1-dev libpq-dev
+
+sudo wget https://bootstrap.pypa.io/get-pip.py
+sudo python get-pip.py
+
+
+# Install Ansible
+sudo apt-get install -y software-properties-common
+sudo apt-add-repository -y ppa:ansible/ansible
+sudo apt-get update
+sudo apt-get install -y ansible
+
+# Generate ssh keys
+ssh-keygen -t rsa
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/id_rsa
+
+# Clone OSOPS TOOLS project
+git clone https://github.com/openstack/osops-tools-contrib.git ~/osops-tools-contrib
+
+# Install shade
+sudo pip install shade
+
+# Configure LAMPSTACK
+#echo "cloud ansible_python_interpreter=$python_interpreter/python" >> ~/osops-tools-contrib/ansible/lampstack/hosts
+wget https://raw.githubusercontent.com/dlux/os_interop_challenge/master/cloud1.yml -O ~/osops-tools-contrib/ansible/lampstack/vars/cloud1.yml
+chmod +x ~/osops-tools-contrib/ansible/lampstack/vars/cloud1.yml
+
+# Disable strict key check
+sudo bash -c 'cat << EOF >> /etc/ssh/ssh_config
+StrictHostKeyChecking no
+EOF'
