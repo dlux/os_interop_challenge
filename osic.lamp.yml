@@ -12,7 +12,7 @@ app_env: {
   image_name: "ubuntu-server-14.04",
   region_name: "RegionOne",
   private_net_name: "interopnet",
-  public_net_name: "GATEWAY_NET_V6",
+  public_net_name: "GATEWAY_NET",
   flavor_name: "m1.small",
   public_key_file: "/home/ubuntu/.ssh/id_rsa.pub",
   stack_size: 4,
