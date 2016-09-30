@@ -22,7 +22,7 @@ LAMP Stack
 
       .. code-block:: bash
         
-        ansible-playbook -e "action=apply env=cloud1 password=XXXXX" site.yml
+        ansible-playbook -e "action=apply env=osic password=XXXXX" site.yml
 
    * Provision 4 nodes
    * Create security group
@@ -31,7 +31,7 @@ LAMP Stack
    * Attach the cinder volume to database node for wordpress database and content
    * Setup NFS on database node, so that web servers can share the cinder
      volume space, all wordpress content will be saved on cinder volume.
-     This is to ensure that the multiple web servres will represent same
+     This is to ensure that the multiple web servers will represent same
      content.
    * Setup mysql to use the space provided by cinder volume
    * Configure and initialize wordpress
@@ -41,19 +41,19 @@ LAMP Stack
    * Remove not needed floating IPs from servers which do not need them.
 
 
-Docker Swamp
+Docker Swarm
 **********
 
 **Details:**
 
-1. Tool: Terraform
-2. Repo: https://github.com/openstack/osops-tools-contrib/ansible/dockerswamp
+1. Tool: Ansible
+2. Repo: https://github.com/openstack/osops-tools-contrib/ansible/dockerswarm
 3. Flow:
-   * Start Ansible playbook from osops-tools-contrib/ansible/dockerswamp folder
+   * Start Ansible playbook from osops-tools-contrib/ansible/dockerswarm folder
 
      .. code-block:: bash
        
-       ansible-playbook -e "action=apply env=cloud1 password=XXXXX" site.yml
+       ansible-playbook -e "action=apply env=osic password=XXXXX" site.yml
 
    * Provision 3 coreos nodes on your cloud
    * Create security group
@@ -79,7 +79,7 @@ One deployer to run them all -- Use a disposable VM to fire the workloads (cloud
 6. Provide Cloud Details:
 
     * osops-tools-contrib/ansible/lampstack/vars/cloud1
-    * osops-tools-contrib/ansible/dockerswamp/vars/cloud1
+    * osops-tools-contrib/ansible/dockerswarm/vars/cloud1
 
 7. Install docker client
 
