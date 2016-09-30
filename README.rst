@@ -51,9 +51,9 @@ Docker Swamp
 3. Flow:
    * Start Ansible playbook from osops-tools-contrib/ansible/dockerswamp folder
 
-.. code-block:: bash
-
-  ansible-playbook -e "action=apply env=cloud1 password=XXXXX" site.yml
+     .. code-block:: bash
+       
+       ansible-playbook -e "action=apply env=cloud1 password=XXXXX" site.yml
 
    * Provision 3 coreos nodes on your cloud
    * Create security group
