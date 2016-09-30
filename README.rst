@@ -86,6 +86,10 @@ One deployer to run them all -- Use a disposable VM to fire the workloads (cloud
     * apt-get -y install docker.io
     * ln -sf /usr/bin/docker.io /usr/local/bin/docker
 
+8. Desable strict host key checks:
+
+    * Add "StrictHostKeyChecking no" to /etc/ssh/ssh_config under "Hosts *"
+
 **NOTE:** Refer to the osops repo for further details.
 
 **NOTE:** Use **deployer_novenv.sh** or **deployer_venv.sh** to install pre-reqs on your deployer VM (assume Ubuntu14.04)
