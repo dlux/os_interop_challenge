@@ -17,7 +17,7 @@ sudo apt-get update
 sudo apt-get install -y ansible
 
 # Generate ssh keys
-ssh-keygen -t rsa
+ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 eval $(ssh-agent -s)
 ssh-add ~/.ssh/id_rsa
 
