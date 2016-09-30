@@ -20,9 +20,9 @@ LAMP Stack
 
    * Start Ansible playbook from osops-tools-contrib/ansible/lampstack folder
 
-.. code-block:: bash
-
-  ansible-playbook -e "action=apply env=cloud1 password=XXXXX" site.yml
+      .. code-block:: bash
+        
+        ansible-playbook -e "action=apply env=cloud1 password=XXXXX" site.yml
 
    * Provision 4 nodes
    * Create security group
