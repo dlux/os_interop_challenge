@@ -49,3 +49,8 @@ $python_interpreter/pip install shade
 echo "cloud ansible_python_interpreter=$python_interpreter/python" >> ~/osops-tools-contrib/ansible/lampstack/hosts
 wget https://raw.githubusercontent.com/dlux/os_interop_challenge/master/cloud1.yml -O ~/osops-tools-contrib/ansible/lampstack/vars/cloud1.yml
 chmod +x ~/osops-tools-contrib/ansible/lampstack/vars/cloud1.yml
+
+# Disable strict key check
+sudo bash -c 'cat << EOF >> /etc/ssh/ssh_config
+StrictHostKeyChecking no
+EOF'
