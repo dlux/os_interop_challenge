@@ -12,6 +12,10 @@ sudo python get-pip.py
 sudo pip install virtualenv
 sudo pip install virtualenvwrapper
 
+# Install docker client
+sudo apt-get install -y docker.io
+sudo ln -sf /usr/bin/docker.io /usr/local/bin/docker
+
 # Install Ansible
 sudo apt-get install -y software-properties-common
 sudo apt-add-repository -y ppa:ansible/ansible
@@ -45,10 +49,12 @@ git clone https://github.com/openstack/osops-tools-contrib.git ~/osops-tools-con
 # Install shade
 $python_interpreter/pip install shade
 
-# Configure LAMPSTACK
+# Configure Workloads
 echo "cloud ansible_python_interpreter=$python_interpreter/python" >> ~/osops-tools-contrib/ansible/lampstack/hosts
-wget https://raw.githubusercontent.com/dlux/os_interop_challenge/master/cloud1.yml -O ~/osops-tools-contrib/ansible/lampstack/vars/cloud1.yml
-chmod +x ~/osops-tools-contrib/ansible/lampstack/vars/cloud1.yml
+wget https://raw.githubusercontent.com/dlux/os_interop_challenge/master/osic.lamp.yml -O ~/osops-tools-contrib/ansible/lampstack/vars/osic.yml
+chmod +x ~/osops-tools-contrib/ansible/lampstack/vars/osic.yml
+wget https://raw.githubusercontent.com/dlux/os_interop_challenge/master/osic.swarm.yml -O ~/osops-tools-contrib/ansible/dockerswarm/vars/osic.yml
+chmod +x ~/osops-tools-contrib/ansible/dockerswarm/vars/osic.yml
 
 # Disable strict key check
 sudo bash -c 'cat << EOF >> /etc/ssh/ssh_config
