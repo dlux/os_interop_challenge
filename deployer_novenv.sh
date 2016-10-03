@@ -41,3 +41,10 @@ chmod +x ~/osops-tools-contrib/ansible/dockerswarm/vars/osic.yml
 sudo bash -c 'cat << EOF >> /etc/ssh/ssh_config
     StrictHostKeyChecking no
 EOF'
+
+# Install RefStack client
+git clone https://github.com/openstack/refstack-client.git
+cd refstack-client
+./setup_env
+
+
