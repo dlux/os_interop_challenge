@@ -86,7 +86,7 @@ One deployer to run them all -- Use a disposable VM to fire the workloads (cloud
     * apt-get -y install docker.io
     * ln -sf /usr/bin/docker.io /usr/local/bin/docker
 
-8. Desable strict host key checks:
+8. Disable strict host key checks:
 
     * Add "StrictHostKeyChecking no" to /etc/ssh/ssh_config under "Hosts *"
 
